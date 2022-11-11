@@ -3,7 +3,10 @@ const cabecalho = document.createElement("thead");
 const corpo = document.createElement("tbody");
 const rodape = document.createElement("tfoot");
 
-document.getElementById('table').appendChild(tabela);
+document.body.appendChild(tabela);
+tabela.appendChild(cabecalho);
+tabela.appendChild(corpo);
+tabela.appendChild(rodape);
 
 const animais = [
     {
@@ -99,22 +102,15 @@ td.innerText = `Total de animais: ${totalAnimais}`;
 td.setAttribute("colspan", "4");
 rodape.appendChild(td)
 
-tabela.appendChild(cabecalho);
-tabela.appendChild(corpo);
-tabela.appendChild(rodape);
-
-document.querySelector('table').style.margin = '1vw';
-document.querySelector('table').style.padding = '2vw';
-document.querySelector('table').style.backgroundColor = 'black';
-
 Object.assign(tabela.style, {
-    border: '10px solid',
     'font-size': '20px',
     textAlign: 'center',
     width: '90vw',
     height: '85vh',
     color: 'white',
     padding: '2vh',
+    margin: '1vw',
+    backgroundColor: 'black'
 })
 
 Object.assign(cabecalho.style, {
