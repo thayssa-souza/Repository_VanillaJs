@@ -59,16 +59,15 @@ window.create = async (status = "hide") => {
 
         buttonForms.addEventListener("click", async function(event){
             event.preventDefault();
-            console.log("botão");
 
             const newBook = {
-                tiragem: document.getElementById("Tiragem").value,
+                tiragem: parseInt(document.getElementById("Tiragem").value),
                 titulo: document.getElementById("Titulo").value,
                 autor: document.getElementById("Autor").value,
                 descricao: document.getElementById("Descrição").value,
             };
 
-            console.log(newBook);
+            console.log(newBook.tiragem);
 
             await createBooks(newBook);
             alert("Livro cadastrado com sucesso!");

@@ -22,6 +22,11 @@ window.updateBooks = async (status = "hide") => {
     updateTitle.innerText = "Editar livros";
 
     updateContainer.appendChild(updateTitle);
+
+
+    async function editBooks(event){
+        
+    }
 }
 
 updateBooks();

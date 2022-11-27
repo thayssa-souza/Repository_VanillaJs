@@ -43,3 +43,15 @@ window.hiddenSection = (event) => {
         updateContainer.classList.add("hide");
     }
 };
+
+// function invisibleEstab(tag) {
+//     Object.assign(tag.style, {
+//       display: "none",
+//     });
+// }
+
+// function visibleEstab(tag) {
+//     Object.assign(tag.style, {
+//       display: "",
+//     });
+// }
