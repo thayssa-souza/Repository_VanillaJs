@@ -12,3 +12,7 @@ window.create = async (status = "hide") => {
         createContainer.classList.remove("hide");
     }
 }
+
+(async () => {
+    
+})
