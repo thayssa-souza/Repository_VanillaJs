@@ -1,10 +1,10 @@
 (() => {
-    const updateStyles = document.createElement("style");
-    updateStyles.innerHTML += `
+    const homeStyles = document.createElement("style");
+    homeStyles.innerHTML += `
         .hide{
             display: none;
         }
-        
+
         *{
             margin: 0;
             padding: 0;
@@ -13,7 +13,6 @@
             font-family: 'Roboto', sans-serif;
         }
 
-
     `;
-    document.body.appendChild(updateStyles);
+    document.body.appendChild(homeStyles);
   })();

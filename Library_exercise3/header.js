@@ -6,13 +6,20 @@
 
 const navHeader = [
     {
+        nome: "Home",
+        classList: "navHome"
+    },{
         nome: "Cadastrar",
+        classList: "navCreate"
     },{
         nome: "Buscar",
+        classList: "navGet"
     },{
         nome: "Alterar cadastro",
+        classList: "navUpdate"
     },{
         nome: "Deletar",
+        classList: "navDelete"
     }
 ]
 
@@ -35,10 +42,12 @@ function generateHeader(){
     navHeader.forEach(item => {
         const listHeader = document.createElement("li");
         const linksHeader = document.createElement("a");
-        listHeader.setAttribute("class", "listHeader");
+        listHeader.setAttribute("class", item.classList + " listHeader");
         linksHeader.setAttribute("class", "link");
+
+        linksHeader.addEventListener("click", hiddenSection);
         linksHeader.innerText = item.nome;
-        linksHeader.setAttribute("href", item.id);
+
         ulHeader.appendChild(listHeader);
         listHeader.appendChild(linksHeader);
     })

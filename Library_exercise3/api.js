@@ -32,7 +32,7 @@ window.createBooks = async function (newBook){
 
 window.getBooks = async function() {
     try{
-        const promise = await fetch(`${url}/livro/lista` , {
+        const promise = await fetch(`${url}/livro/lista`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -86,7 +86,7 @@ window.updateBook = async function(editBook){
 
 window.deleteBook = async function(idBook){
     try{
-        const promise = await fetch(`${url}/delete`, {
+        const promise = await fetch(`${url}/livro`, {
             mehod: "DELETE",
             headers: {
                 "Content-Type": "application/json",

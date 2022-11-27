@@ -5,15 +5,19 @@
  })();
 
 for (const files of [
-    "./scriptStyles.js",
+    "./commonFunctions.js",
+    "./api.js",
     "./header.js",
+    "./home.js",
     "./crud/create.js",
     "./crud/get.js",
     "./crud/update.js",
     "./crud/delete.js",
     "./footer.js"
-]) {
+    ]){
     const script = document.createElement("script");
     script.setAttribute("src", `${files}`);
     document.head.appendChild(script);
 }
+
+
