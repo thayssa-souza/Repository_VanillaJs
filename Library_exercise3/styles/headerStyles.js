@@ -1,11 +1,12 @@
 (() => {
-    const style = document.createElement("style");
-    style.innerHTML += `
+    const headerStyles = document.createElement("style");
+    headerStyles.innerHTML += `
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             list-style: none;
+            font-family: 'Roboto', sans-serif;
         }
 
         header{
@@ -20,12 +21,6 @@
 
         .containerHeader{
             width: 80%;
-        }
-
-        .containerMenu{
-            display: none;
-            width: 50vw;
-            height: 5vh;
         }
 
         .spanMenu{
@@ -64,22 +59,13 @@
             }
             .ulHeader{ 
                 width: 100%;
-                position: fixed;
-                left: -100%;
-                top: 30vh;
-                gap: 0;
-                flex-direction: column;
                 background-color: #184e77;
                 text-align: center;
             }
             .listHeader a{
                 font-size: 12px;
             }
-            .containerMenu{
-                display: block;
-                border: solid red;
-            }
         }
     `;
-    document.body.appendChild(style);
+    document.body.appendChild(headerStyles);
   })();
