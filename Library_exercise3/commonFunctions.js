@@ -10,36 +10,36 @@ window.hiddenSection = (event) => {
     if(className == "navHome listHeader"){
       homeContainer.classList.remove("hide");
       createContainer.classList.add("hide");
-    //   getContainer.classList.add("hide");
-    //   updateContainer.classList.add("hide");
-    //   deleteContainer.classList.add("hide");
+      getContainer.classList.add("hide");
+      updateContainer.classList.add("hide");
+      deleteContainer.classList.add("hide");
     } 
     else if(className == "navCreate listHeader"){
         createContainer.classList.remove("hide");
         homeContainer.classList.add("hide");
-        // getContainer.classList.add("hide");
-        // updateContainer.classList.add("hide");
-        // deleteContainer.classList.add("hide");
+        getContainer.classList.add("hide");
+        updateContainer.classList.add("hide");
+        deleteContainer.classList.add("hide");
     } 
     else if(className == "navGet listHeader") {
-        // getContainer.classList.remove("hide");
-        homeContainer.classList.add("hide");
-        // createContainer.classList.add("hide");
-        // updateContainer.classList.add("hide");
-        // deleteContainer.classList.add("hide");
-    }
-    else if(className == "navUpdate"){
-        // updateContainer.classList.remove("hide");
+        getContainer.classList.remove("hide");
         homeContainer.classList.add("hide");
         createContainer.classList.add("hide");
-        // getContainer.classList.add("hide");
-        // deleteContainer.classList.add("hide");
+        updateContainer.classList.add("hide");
+        deleteContainer.classList.add("hide");
     }
-    else if(className == "navDelete"){
-        // deleteContainer.classList.remove("hide");
+    else if(className == "navUpdate listHeader"){
+        updateContainer.classList.remove("hide");
         homeContainer.classList.add("hide");
         createContainer.classList.add("hide");
-        // getContainer.classList.add("hide");
-        // updateContainer.classList.add("hide");
+        getContainer.classList.add("hide");
+        deleteContainer.classList.add("hide");
+    }
+    else if(className == "navDelete listHeader"){
+        deleteContainer.classList.remove("hide");
+        homeContainer.classList.add("hide");
+        createContainer.classList.add("hide");
+        getContainer.classList.add("hide");
+        updateContainer.classList.add("hide");
     }
 };

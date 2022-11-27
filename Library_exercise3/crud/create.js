@@ -54,7 +54,7 @@ window.create = async (status = "hide") => {
 
         const buttonForms = document.createElement("button");
         buttonForms.setAttribute("class", "buttonForms");
-        buttonForms.textContent = "Cadastrar livro";
+        buttonForms.textContent = "Cadastrar livros";
         divForms.appendChild(buttonForms);
 
         buttonForms.addEventListener("click", async function(event){

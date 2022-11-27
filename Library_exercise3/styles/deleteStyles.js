@@ -1,6 +1,10 @@
 (() => {
     const deleteStyles = document.createElement("style");
     deleteStyles.innerHTML += `
+        .hide{
+            display: none;
+        }
+        
         *{
             margin: 0;
             padding: 0;
