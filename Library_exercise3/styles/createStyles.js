@@ -13,11 +13,19 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        .createContainer h1{
-            border: solid blue;
+        .createContainer{
+            width: 100%;
+            height: 95vh;
         }
 
+        .createTitle{
+            padding-top: 5vh;
+            text-align: center;
+        }
 
+        .divForms{
+            border: solid red;
+        }
     `;
     document.body.appendChild(createStyles);
-  })();
+})();

@@ -1,6 +1,6 @@
 (() => {
     const createStyle = document.createElement("script");
-    createStyle.setAttribute("src", "../styles/createStyles.js");
+    createStyle.setAttribute("src", "./styles/createStyles.js");
     document.body.appendChild(createStyle);
 })();
 
@@ -59,6 +59,7 @@ window.create = async (status = "hide") => {
 
         buttonForms.addEventListener("click", async function(event){
             event.preventDefault();
+            console.log("botão");
 
             const newBook = {
                 tiragem: document.getElementById("Tiragem").value,
@@ -67,9 +68,11 @@ window.create = async (status = "hide") => {
                 descricao: document.getElementById("Descrição").value,
             };
 
-        await createBooks(newBook);
-        alert("Livro cadastrado com sucesso!");
-        reloadPage();
+            console.log(newBook);
+
+            await createBooks(newBook);
+            alert("Livro cadastrado com sucesso!");
+            reloadPage();
         });
     })();
 };

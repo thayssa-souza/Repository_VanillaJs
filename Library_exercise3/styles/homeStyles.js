@@ -15,4 +15,5 @@
 
     `;
     document.body.appendChild(homeStyles);
+    console.log("home");
   })();

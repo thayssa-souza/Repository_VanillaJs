@@ -1,31 +1,30 @@
-const url = "http://livros.letscode.dev.netuno.org:25390/services/_openapi";
+const url = "http://livros.letscode.dev.netuno.org:25390/services";
 
-const uidAluno = "24c71f32-f66d-48b6-80f1-d42b71e95e0c";
+const uidAluno = 
+{ 
+    uid: "24c71f32-f66d-48b6-80f1-d42b71e95e0c",
+};
 
-window.createBooks = async function (newBook){
+window.createBooks = async function ({ tiragem, titulo, autor, descricao }){
     try{
         const promise = await fetch(`${url}/livro`, {
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                aluno: {
-                    uid: uidAluno,
-                },
-                tiragem: newBook.tiragem,
-                titulo: newBook.titulo,
-                autor: newBook.autor,
-                descricao: newBook.descricao,
+                uidAluno,
+                tiragem,
+                titulo,
+                autor,
+                descricao,
             }),
         });
-    if(!promise){
-        alert("Erro na requisição... \n Tente novamente mais tarde.");
-        return [];
-    }
-    return promise.json();
-    }
-    catch (error){
+        // if(!promise){
+        //     alert("Erro na requisição... \n Tente novamente mais tarde.");
+        //     return [];
+        // }
+    } catch (error){
         console.error(`Erro na requisição: ${error}`);
     }
 };
