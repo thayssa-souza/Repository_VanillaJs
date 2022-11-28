@@ -15,11 +15,8 @@ const navHeader = [
         nome: "Buscar",
         classList: "navGet"
     },{
-        nome: "Alterar cadastro",
+        nome: "Alterar/Deletar cadastro",
         classList: "navUpdate"
-    },{
-        nome: "Deletar",
-        classList: "navDelete"
     }
 ]
 

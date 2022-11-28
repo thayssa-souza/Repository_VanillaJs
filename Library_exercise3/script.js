@@ -11,7 +11,7 @@ for (const files of [
     "./home.js",
     "./crud/create.js",
     "./crud/get.js",
-    "./crud/update.js",
+    "./crud/updateAndDelete.js",
     "./crud/delete.js",
     "./footer.js"
     ]){

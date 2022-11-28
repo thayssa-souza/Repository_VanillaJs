@@ -67,8 +67,6 @@ window.create = async (status = "hide") => {
                 descricao: document.getElementById("Descrição").value,
             };
 
-            console.log(newBook.tiragem);
-
             await createBooks(newBook);
             alert("Livro cadastrado com sucesso!");
             reloadPage();

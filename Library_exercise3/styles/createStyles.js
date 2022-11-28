@@ -19,9 +19,9 @@
         }
 
         .createTitle{
-            padding-top: 8vh;
+            padding-top: 6vh;
             text-align: center;
-            padding-bottom: 8vh;
+            padding-bottom: 6vh;
             font-size: 2rem;
         }
 
@@ -47,14 +47,21 @@
 
         .input{
             width: 30vw;
-            height: 5vh;
-            margin-top: -5vh;
+            height: 6vh;
             margin-bottom: 3vh;
             border-radius: 10px;
+            border: solid 5px #00b4d8;
         }
         .input::placeholder{
             font-size: 1rem;
             text-align: center;
+        }
+
+        .buttonForms{
+            margin-top: 2vh;
+            width: 12vw;
+            height: 8vh;
+            font-size: 1rem;
         }
     `;
     document.body.appendChild(createStyles);

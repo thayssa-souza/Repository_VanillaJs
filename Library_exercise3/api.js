@@ -2,7 +2,7 @@ const url = "http://livros.letscode.dev.netuno.org:25390/services";
 
 const uidAluno = "24c71f32-f66d-48b6-80f1-d42b71e95e0c";
 
-window.createBooks = async function ({ tiragem, titulo, autor, descricao}){
+window.createBooks = async function ({ tiragem, titulo, autor, descricao }){
     try{
         const promise = await fetch(`${url}/livro`, {
             method: "POST",
@@ -75,7 +75,7 @@ window.getBooksByTitle = async function(titulo){
     }
 }
 
-window.updateBook = async function(editBook){
+window.updateBook = async function({ tiragem, titulo, autor, descricao} ){
     try{
         const promise = await fetch(`${url}/livro`,{
             method: "PUT",
@@ -87,10 +87,10 @@ window.updateBook = async function(editBook){
                 aluno: {
                     uid: uidAluno,
                 },
-                tiragem: editBook.tiragem,
-                titulo: editBook.titulo,
-                autor: editBook.autor,
-                descricao: editBook.descricao,
+                tiragem: tiragem,
+                titulo: titulo,
+                autor: autor,
+                descricao: descricao,
             }),
         });
     }

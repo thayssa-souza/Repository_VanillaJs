@@ -76,7 +76,7 @@ window.get = async (status = "hide") => {
             Object.values(storageList[i]).forEach((items) => {
                 const headerTd = document.createElement("td");
                 tableTr.appendChild(headerTd);
-                headerTd.textContent = items;
+                headerTd.textContent = items;                
             });
             tableTr.firstChild.classList.add("idBook");
         }

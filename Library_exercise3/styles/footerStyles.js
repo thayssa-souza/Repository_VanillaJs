@@ -16,7 +16,6 @@
             position: relative;
             z-index: 1;
             bottom: 0;
-            margin-top: 1rem;
             display: flex;
             align-items: center;
             justify-content: space-evenly;

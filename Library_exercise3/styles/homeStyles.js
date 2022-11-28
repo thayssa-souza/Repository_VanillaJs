@@ -13,6 +13,11 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        .carouselBooks{
+            width: 100%;
+            height: 75vh;
+        }
+
     `;
     document.body.appendChild(homeStyles);
     console.log("home");

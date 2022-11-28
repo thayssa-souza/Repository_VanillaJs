@@ -4,7 +4,7 @@
     document.body.appendChild(updateStyle);
 })();
 
-window.updateBooks = async (status = "hide") => {
+window.updateOrDeleteBooks = async (status = "hide") => {
     const updateContainer = document.createElement("section");
     updateContainer.setAttribute("class", "updateContainer");
     if (status === "hide"){
@@ -25,13 +25,44 @@ window.updateBooks = async (status = "hide") => {
 
     const apiList = await getBooks();
     const storageList = apiList.length != 0 ? apiList : JSON.parse(localStorage.get);
+    
+    const divUpdateForms = document.createElement("div");
+    divUpdateForms.setAttribute("class", "divUpdateForms"); 
+    btnEditForms = document.createElement("button");
+    btnEditForms.setAttribute("class", "btnEditForms");
+    btnEditForms.textContent = "Atualizar";
 
-    const divForms = document.createElement("div");
-    divForms.setAttribute("class", "divForms"); 
-
-    updateContainer.appendChild(divForms);
-
+    
     await editBooks();
+    updateContainer.appendChild(divUpdateForms);
+
+    await formUpdate();
+    divUpdateForms.appendChild(btnEditForms);
+
+
+    async function formUpdate(){
+        const labelInputDiv = document.createElement("div");
+        labelInputDiv.setAttribute("class", "labelInputDiv");
+
+        const formsTitle = ["Titulo", "Autor", "Descrição", "Tiragem"];
+
+        for (const iterator of formsTitle) {
+            const labelForms = document.createElement("label");
+            labelForms.setAttribute("class", "label");
+            labelForms.setAttribute("for", iterator);
+            labelForms.textContent = `${iterator}:`
+
+            const inputForms = document.createElement("input");
+            inputForms.setAttribute("class", "input");
+            inputForms.setAttribute("id", iterator);
+            inputForms.setAttribute("type", "text");
+
+            divUpdateForms.appendChild(labelInputDiv);
+            labelInputDiv.appendChild(labelForms);
+            labelInputDiv.appendChild(inputForms);        
+        }
+    }
+
 
     async function editBooks(){
         const theadTitles = ["Uid", "Tiragem", "Titulo", "Autor", "Descrição", "Editar", "Deletar"];
@@ -61,39 +92,42 @@ window.updateBooks = async (status = "hide") => {
                 headerTd.textContent = items;
             });
             tableTr.firstChild.classList.add("idBook");
-            // tableTr.addEventListener("dblclick", edit);
+            tableTr.lastChild.classList.add("Descricao");
+            
+            // tableTr.addEventListener("dblclick", editBooksEvent);
         }
     }
 
     async function editBooksEvent(event){
-        let uidUpdate = null;
-
         const itemUpdate = this.parentNode.parentNode.querySelectorAll("td");
         uidUpdate = itemUpdate[0].textContent;
 
-        const tiragem = document.querySelector("#Tiragem");
-        tiragem.value = itemUpdate[1].textContent;
-        const titulo = document.querySelector("#Titulo");
-        titulo.value = itemUpdate[2].textContent;
-        const autor = document.querySelector("#Autor");
-        autor.value = itemUpdate[3].textContent;
-        const descricao = document.querySelector("#descricao");
+        // const tiragem = document.querySelector("#Tiragem");
+        // tiragem.value = itemUpdate[1].textContent;
+        // const titulo = document.querySelector("#Titulo");
+        // titulo.value = itemUpdate[2].textContent;
+        // const autor = document.querySelector("#Autor");
+        // autor.value = itemUpdate[3].textContent;
+        const descricao = document.querySelector("#Descricao");
         descricao.value = itemUpdate[4].textContent;   
     }
 
-    const editBookUpd = {
-        uid: uidEdit,
-        tiragem: document.getElementById("Tiragem").value,
-        titulo: document.getElementById("Titulo").value,
-        autor: document.getElementById("Autor").value,
-        descricao: document.getElementById("Descricao").value,
-    }
+    btnEditForms.addEventListener("click", async function(event){
+        event.preventDefault();
 
-    await updateBook(editBookUpd);
-    alert("Livro atualizado com sucesso!"); 
+        const editBookUpd = {
+            // tiragem: document.getElementById("Tiragem").value,
+            // titulo: document.getElementById("Titulo").value,
+            // autor: document.getElementById("Autor").value,
+            descricao: document.getElementById("Descricao").value,
+        }
+
+        await updateBook(editBookUpd);
+        alert("Livro atualizado com sucesso!");
+        reloadPage();
+    });
 
     async function deleteBookEvent(event){
-        console.log("começo da função");
         const itemDelete = this.parentNode.parentNode.querySelectorAll("td");
         console.log("this: " + this);
         await deleteBook(itemDelete[0].textContent);
@@ -117,21 +151,25 @@ window.updateBooks = async (status = "hide") => {
             imgIcons.setAttribute("class", "imgIcons");
 
             if(icons == "iconTrash"){
-                imgIcons.setAttribute("src", "../images/iconTrash.png");
+                imgIcons.setAttribute("src", "./images/iconTrash.png");
                 imgIcons.addEventListener("dblclick", deleteBookEvent);
             }
             else{
-                imgIcons.setAttribute("src", "../images/iconPencil.png");
-                // imgIcons.addEventListener("dblclick", editBooksEvent);
+                imgIcons.setAttribute("src", "./images/iconPencil.png");
+                imgIcons.addEventListener("dblclick", editBooksEvent);
             }
 
             tdIcons.appendChild(imgIcons);
             elements.appendChild(tdIcons);
         });
-    }
-    
-
-    }
+    }}
 }
 
-updateBooks();
+updateOrDeleteBooks();
+
+async function reloadPage(){
+    const main = document.querySelector("main");
+    const section = document.querySelector("section.updateContainer");
+    main.removeChild(section);
+    await create("no hide");
+}

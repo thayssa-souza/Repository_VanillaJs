@@ -36,13 +36,13 @@
         }
 
         .listHeader{
-            width: 15vw;
+            width: 40vw;
             text-align: center;
         }
 
         .listHeader a{
             text-decoration: none;
-            font-size: 24px;
+            font-size: 22px;
             color: #ffffff;
         }
         .listHeader a:hover{
