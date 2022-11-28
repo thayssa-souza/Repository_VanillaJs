@@ -94,7 +94,7 @@ window.updateOrDeleteBooks = async (status = "hide") => {
             tableTr.firstChild.classList.add("idBook");
             tableTr.lastChild.classList.add("Descricao");
             
-            // tableTr.addEventListener("dblclick", editBooksEvent);
+            tableTr.addEventListener("dblclick", editBooksEvent);
         }
     }
 
@@ -102,12 +102,12 @@ window.updateOrDeleteBooks = async (status = "hide") => {
         const itemUpdate = this.parentNode.parentNode.querySelectorAll("td");
         uidUpdate = itemUpdate[0].textContent;
 
-        // const tiragem = document.querySelector("#Tiragem");
-        // tiragem.value = itemUpdate[1].textContent;
-        // const titulo = document.querySelector("#Titulo");
-        // titulo.value = itemUpdate[2].textContent;
-        // const autor = document.querySelector("#Autor");
-        // autor.value = itemUpdate[3].textContent;
+        const tiragem = document.querySelector("#Tiragem");
+        tiragem.value = itemUpdate[1].textContent;
+        const titulo = document.querySelector("#Titulo");
+        titulo.value = itemUpdate[2].textContent;
+        const autor = document.querySelector("#Autor");
+        autor.value = itemUpdate[3].textContent;
         const descricao = document.querySelector("#Descricao");
         descricao.value = itemUpdate[4].textContent;   
     }
@@ -116,9 +116,9 @@ window.updateOrDeleteBooks = async (status = "hide") => {
         event.preventDefault();
 
         const editBookUpd = {
-            // tiragem: document.getElementById("Tiragem").value,
-            // titulo: document.getElementById("Titulo").value,
-            // autor: document.getElementById("Autor").value,
+            tiragem: document.getElementById("Tiragem").value,
+            titulo: document.getElementById("Titulo").value,
+            autor: document.getElementById("Autor").value,
             descricao: document.getElementById("Descricao").value,
         }
 

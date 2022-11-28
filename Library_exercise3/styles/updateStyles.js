@@ -47,7 +47,6 @@
         }
 
         .labelInputDiv{
-            font-size: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -55,10 +54,13 @@
 
         .updateContainer label{
             width: 8vw;
+            font-size: 1rem;
+            font-weight: bolder;
         }
 
         .updateContainer input{
             width: 30vw;
+            height: 6vh;
         }
 
         .updateContainer button{
