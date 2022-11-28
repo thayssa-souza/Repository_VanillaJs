@@ -100,21 +100,22 @@ window.updateBook = async function(editBook){
 };
 
 window.deleteBook = async function(idBook){
+    console.log("idApi: " + idBook);
     try{
         const promise = await fetch(`${url}/livro`, {
-            mehod: "DELETE",
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                uid: `${idBook}`,
                 aluno: {
                     uid: uidAluno,
                 },
+                uid: idBook,
             }),
         });
     }
     catch (error){
         console.error(`Erro na requisição: ${error}`);
-    }     
+    } 
 };

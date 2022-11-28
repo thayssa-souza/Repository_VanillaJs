@@ -13,6 +13,12 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        .imgIcons{
+            width:2vw;
+            height: 3vh;
+            border: solid red;
+        }
+
 
     `;
     document.body.appendChild(updateStyles);

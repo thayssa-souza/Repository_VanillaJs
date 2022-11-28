@@ -48,6 +48,8 @@ window.get = async (status = "hide") => {
     getForm.appendChild(getBtn);
 
     getBtn.addEventListener("click", async function(event){
+        event.preventDefault();
+        
         await showBooks(input);
     })
 

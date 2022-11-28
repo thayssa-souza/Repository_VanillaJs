@@ -44,14 +44,22 @@ window.hiddenSection = (event) => {
     }
 };
 
-// function invisibleEstab(tag) {
-//     Object.assign(tag.style, {
-//       display: "none",
-//     });
-// }
+window.deleteTitle = (tag) => {
+    Object.assign(tag.style, {
+      opacity: "0",
+      transition: "0.5s",
+    });
+  }
 
-// function visibleEstab(tag) {
-//     Object.assign(tag.style, {
-//       display: "",
-//     });
+// window.insertDataTable = (storageList) => {
+//     for(let i = 0; i < storageList.length; i++){
+//         const tableTr = tableBody.insertRow();
+
+//         Object.values(storageList[i]).forEach((items) => {
+//             const headerTd = document.createElement("td");
+//             tableTr.appendChild(headerTd);
+//             headerTd.textContent = items;
+//         });
+//         tableTr.firstChild.classList.add("idBook");
+//     }
 // }
