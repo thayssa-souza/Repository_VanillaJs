@@ -72,74 +72,93 @@ window.updateOrDeleteBooks = async (status = "hide") => {
         const tableBody = tableBooks.createTBody();
         updateContainer.appendChild(tableBooks);
 
-    for(let i = 0; i < theadTitles.length; i++){
-        const tableThead = document.createElement("th");
-        tableHeader.appendChild(tableThead);
-        tableThead.textContent = theadTitles[i];
-    }
+        for(let i = 0; i < theadTitles.length; i++){
+            const tableThead = document.createElement("th");
+            tableHeader.appendChild(tableThead);
+            tableThead.textContent = theadTitles[i];
+        }
 
-    insertDataTable(storageList);
-    createIcon("iconPencil");
-    createIcon("iconTrash");
-    function insertDataTable(storageList) {
-        for(let i = 0; i < storageList.length; i++){
-            const tableTr = tableBody.insertRow();
-            tableTr.setAttribute("class", "tableTr");
-    
-            Object.values(storageList[i]).forEach((items) => {
-                const headerTd = document.createElement("td");
-                tableTr.appendChild(headerTd);
-                headerTd.textContent = items;
-            });
-            tableTr.firstChild.classList.add("idBook");
-            tableTr.lastChild.classList.add("Descricao");
+        insertDataTable(storageList);
+        createIcon("iconPencil");
+        createIcon("iconTrash");
+        function insertDataTable(storageList) {
+            for(let i = 0; i < storageList.length; i++){
+                const tableTr = tableBody.insertRow();
+                tableTr.setAttribute("class", "tableTr");
+                tableTr.setAttribute("data-bookid", storageList[i].uid);
+        
+                Object.entries(storageList[i]).forEach((item) => {
+                    const headerTd = document.createElement("td");
+                    headerTd.setAttribute("data-td-class", item[0])
+                    tableTr.appendChild(headerTd);
+                    headerTd.textContent = item[1];
+                });
+
+                tableTr.addEventListener("dblclick", editBooksEvent);
+            }
+        }
+
+        async function editBooksEvent(event){
+            const trBookRow = this.closest("tr");
+            console.log("editBooksEvent, tr:");
+            console.log(trBookRow);
+
+            uidUpdate = trBookRow.querySelector("[data-td-class='uid'").textContent;
+
+            console.log("uid:");
+            console.log(uidUpdate);
             
-            tableTr.addEventListener("dblclick", editBooksEvent);
-        }
-    }
 
-    async function editBooksEvent(event){
-        const itemUpdate = this.parentNode.parentNode.querySelectorAll("td");
-        uidUpdate = itemUpdate[0].textContent;
+            const tiragem = document.querySelector("#Tiragem");
+            tiragem.value = trBookRow.querySelector("[data-td-class='tiragem'").textContent;
+            console.log("tiragem:");
+            console.log(tiragem);
+            console.log(trBookRow.querySelector("[data-td-class='tiragem'").textContent);
 
-        const tiragem = document.querySelector("#Tiragem");
-        tiragem.value = itemUpdate[1].textContent;
-        const titulo = document.querySelector("#Titulo");
-        titulo.value = itemUpdate[2].textContent;
-        const autor = document.querySelector("#Autor");
-        autor.value = itemUpdate[3].textContent;
-        const descricao = document.querySelector("#Descricao");
-        descricao.value = itemUpdate[4].textContent;   
-    }
+            const titulo = document.querySelector("#Titulo");
+            titulo.value = trBookRow.querySelector("[data-td-class='titulo'").textContent;
+            console.log("titulo:");
+            console.log(trBookRow.querySelector("[data-td-class='titulo'").textContent);
 
-    btnEditForms.addEventListener("click", async function(event){
-        event.preventDefault();
+            const autor = document.querySelector("#Autor");
+            autor.value = trBookRow.querySelector("[data-td-class='autor'").textContent;
+            console.log("autor:");
+            console.log(trBookRow.querySelector("[data-td-class='autor'").textContent);
 
-        const editBookUpd = {
-            tiragem: document.getElementById("Tiragem").value,
-            titulo: document.getElementById("Titulo").value,
-            autor: document.getElementById("Autor").value,
-            descricao: document.getElementById("Descricao").value,
+            const descricao = document.querySelector("#Descrição");
+            descricao.value = trBookRow.querySelector("[data-td-class='descricao'").textContent;   
+            console.log("descricao:");
+            console.log(trBookRow.querySelector("[data-td-class='descricao'").textContent);
         }
 
-        await updateBook(editBookUpd);
-        alert("Livro atualizado com sucesso!");
-        reloadPage();
-    });
+        btnEditForms.addEventListener("click", async function(event){
+            event.preventDefault();
 
-    async function deleteBookEvent(event){
-        const itemDelete = this.parentNode.parentNode.querySelectorAll("td");
-        console.log("this: " + this);
-        await deleteBook(itemDelete[0].textContent);
-        console.log("itemDelete: " + itemDelete[0].textContent);
+            const editBookUpd = {
+                tiragem: document.getElementById("Tiragem").value,
+                titulo: document.getElementById("Titulo").value,
+                autor: document.getElementById("Autor").value,
+                descricao: document.getElementById("Descricao").value,
+            }
 
-        deleteTitle(event.target.parentNode.parentNode);
-        setTimeout(function(){
-            event.target.parentNode.parentNode.remove();
-        }, 300);
+            await updateBook(editBookUpd);
+            alert("Livro atualizado com sucesso!");
+            reloadPage();
+        });
 
-        alert("Livro deletado com sucesso!");
-    }
+        async function deleteBookEvent(event){
+            const itemDelete = this.parentNode.parentNode.querySelectorAll("td");
+            console.log("this: " + this);
+            await deleteBook(itemDelete[0].textContent);
+            console.log("itemDelete: " + itemDelete[0].textContent);
+
+            deleteTitle(event.target.parentNode.parentNode);
+            setTimeout(function(){
+                event.target.parentNode.parentNode.remove();
+            }, 300);
+
+            alert("Livro deletado com sucesso!");
+        }
     
     async function createIcon(icons){
         const allTrTable = document.querySelectorAll(".tableTr");
